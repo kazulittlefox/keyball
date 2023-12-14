@@ -4,4 +4,4 @@ OLED_ENABLE = yes
 
 VIA_ENABLE = yes
 
-src += lib/a2j/translate_ansi_to_jis.c
+LIB_SRC += lib/a2j/translate_ansi_to_jis.c
