@@ -1,6 +1,6 @@
 name: Build all firmwares
 
-on: workflow_dispatch
+on: 
   push:
     paths:
       - 'qmk_firmware/keyboards/keyball/**.c'
