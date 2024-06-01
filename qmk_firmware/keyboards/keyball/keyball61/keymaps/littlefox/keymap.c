@@ -20,31 +20,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "quantum.h"
 // added by kazulittlefox...
-#include "lib/a2j/translate_ansi_to_jis.h"
-
+#include "lib/translate_ansi_to_jis.h"
+/* 
 typedef union{
   int32_t raw;
   struct{
-    bool is_jis_mode:1 ;
-  }
+    bool is_jis_mode ;
+  };
 } user_config_t;
 
 user_config_t user_config;
 
-void init_user_config() {
-  user_config.raw = eeconfig_read_user();
-}
-
 bool is_jis_mode(void) {
   return user_config.is_jis_mode;
 }
-
-void set_jis_mode(bool is_jis_mode) {
-  user_config.is_jis_mode = is_jis_mode;
-  eeconfig_update_user(user_config.raw);
-}
-
-set_jis_mode(is_jis_mode);
+*/
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -89,9 +79,10 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!is_jis_mode()) {
-    return true;
-  }
+//  if (!is_jis_mode()) {
+//    return true;
+//
+//  }
   return process_record_user_a2j(keycode, record);
 }
 
@@ -105,4 +96,6 @@ void oledkit_render_info_user(void) {
     keyball_oled_render_ballinfo();
     keyball_oled_render_layerinfo();
 }
+
+
 #endif
